@@ -1,0 +1,102 @@
+[
+    {
+        "id": 0,
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1672710472150-6a64fd9ae0eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+        "title": "Banana",
+        "packing": [0, 1],
+        "sizes": [6, 9, 12],
+        "price": 18,
+        "category": 0,
+        "rating": 4
+    },
+    {
+        "id": 1,
+        "imageUrl": "https://images.unsplash.com/photo-1612198790700-0ff08cb726e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Sea buckthorn",
+        "packing": [0, 1],
+        "sizes": [6, 9, 12],
+        "price": 20,
+        "category": 1,
+        "rating": 6
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://images.unsplash.com/photo-1595665094130-05b74d8d6fd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Strawberry",
+        "packing": [0],
+        "sizes": [6, 9, 12],
+        "price": 20,
+        "category": 1,
+        "rating": 4
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://images.unsplash.com/photo-1554587293-d010b477b5a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Pesto",
+        "packing": [1],
+        "sizes": [9, 12],
+        "price": 25,
+        "category": 2,
+        "rating": 2
+    },
+    {
+        "id": 4,
+        "imageUrl": "https://images.unsplash.com/photo-1596350351228-e47e93fdb992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Chocolate",
+        "packing": [0, 1],
+        "sizes": [6, 9],
+        "price": 23,
+        "category": 3,
+        "rating": 8
+    },
+    {
+        "id": 5,
+        "imageUrl": "https://images.unsplash.com/photo-1595665094099-10d5b8c7aaeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Peach",
+        "packing": [1],
+        "sizes": [6, 9, 12],
+        "price": 22,
+        "category": 0,
+        "rating": 2
+    },
+    {
+        "id": 6,
+        "imageUrl": "https://images.unsplash.com/photo-1531594652722-292a43e752b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1331&q=80",
+        "title": "Parmesan",
+        "packing": [0, 1],
+        "sizes": [6, 9, 12],
+        "price": 28,
+        "category": 2,
+        "rating": 9
+    },
+    {
+        "id": 7,
+        "imageUrl": "https://images.unsplash.com/photo-1548033698-5ceb4f3dce02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=944&q=80",
+        "title": "Raspberry",
+        "packing": [0, 1],
+        "sizes": [6, 9, 12],
+        "price": 23,
+        "category": 1,
+        "rating": 10
+    },
+    {
+        "id": 8,
+        "imageUrl": "https://images.unsplash.com/photo-1566760375908-7450842328b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "title": "Coffee",
+        "packing": [0],
+        "sizes": [6, 12],
+        "price": 21,
+        "category": 3,
+        "rating": 10
+    },
+    {
+        "id": 9,
+        "imageUrl": "https://images.unsplash.com/photo-1599599429032-bc4c3fc132bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=627&q=80",
+        "title": "Truffle",
+        "packing": [0, 1],
+        "sizes": [6, 9, 12],
+        "price": 24,
+        "category": 3,
+        "rating": 7
+    }
+]
