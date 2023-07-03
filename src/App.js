@@ -1,3 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
+import Catalog from './pages/Catalog/Catalog';
+import Cart from './pages/Cart/Cart';
+import NotFound from './pages/NotFound/NotFound';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
@@ -7,8 +11,11 @@ function App() {
         <>
             <Header />
             <main id="main">
-                <h1>Hello world</h1>
-                <a href="/">Just link</a>
+                <Routes>
+                    <Route path="/" element={<Catalog />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </main>
             <Footer />
         </>

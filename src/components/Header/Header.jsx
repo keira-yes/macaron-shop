@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
@@ -6,13 +7,13 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.container + ' container'}>
-                <a href="/" className={styles.logo}>
+                <Link to="/" className={styles.logo}>
                     <picture className={styles.logoImg}>
                         <source media="(max-width: 767px)" srcSet={LogoMobile} />
                         <img src={LogoDesktop} alt="Macaron Logo" />
                     </picture>
-                </a>
-                <a href="/cart" className={styles.cart}>
+                </Link>
+                <Link to="/cart" className={styles.cart}>
                     <span className={styles.cartBlock}>
                         <svg
                             className={styles.cartIcon}
@@ -39,7 +40,7 @@ const Header = () => {
                         <span className={styles.cartBadge}>1</span>
                     </span>
                     <span className={styles.cartTotal}>$456</span>
-                </a>
+                </Link>
             </div>
         </header>
     );
