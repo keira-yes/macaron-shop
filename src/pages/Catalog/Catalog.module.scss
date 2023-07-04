@@ -9,3 +9,10 @@
         gap: 25px;
     }
 }
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-gap: 30px;
+    margin-top: 40px;
+}

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
+import Card from '../../components/Card/Card';
+import categories from '../../assets/categories.json';
 import styles from './Catalog.module.scss';
 
 const Catalog = () => {
-    const packing = ['square', 'heart'];
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const Catalog = () => {
             </div>
             <div className={styles.catalog}>
                 {products.map((product) => (
-                    <div key={product.id}>{product.title}</div>
+                    <Card key={product.id} categories={categories} data={product} />
                 ))}
             </div>
         </>

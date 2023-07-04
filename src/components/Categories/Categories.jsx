@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import categories from '../../assets/categories.json';
 import styles from './Categories.module.scss';
 
 const Categories = () => {
-    const categories = ['All', 'Fruit', 'Berry', 'Cheese', 'Chocolate'];
     const [active, setActive] = useState(0);
 
     return (
