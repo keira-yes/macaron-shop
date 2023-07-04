@@ -14,6 +14,7 @@ const Sort = () => {
             <select name="sort" className={styles.sortSelect} onChange={handleSelect} value={sort}>
                 <option value="popularity">Popularity</option>
                 <option value="price">Price</option>
+                <option value="alphabet">Alphabet</option>
             </select>
         </div>
     );

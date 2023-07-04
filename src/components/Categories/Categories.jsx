@@ -5,10 +5,6 @@ const Categories = () => {
     const categories = ['All', 'Fruit', 'Berry', 'Cheese', 'Chocolate'];
     const [active, setActive] = useState(0);
 
-    const handleActiveCategory = (category) => {
-        setActive(category);
-    };
-
     return (
         <div className={styles.categories}>
             {categories.map((category, i) => (
@@ -16,7 +12,7 @@ const Categories = () => {
                     type="button"
                     key={i}
                     className={styles.category + (i === active ? ' ' + styles.categoryActive : '')}
-                    onClick={() => handleActiveCategory(i)}>
+                    onClick={() => setActive(i)}>
                     {category}
                 </button>
             ))}
