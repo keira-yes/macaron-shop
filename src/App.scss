@@ -234,4 +234,8 @@ h3 {
 .title {
     margin-bottom: 40px;
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 30px;
+    }
 }

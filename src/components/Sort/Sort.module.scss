@@ -4,7 +4,8 @@
     gap: 10px;
 
     @media screen and (max-width: 767px) {
-        gap: 20px;
+        gap: 15px;
+        font-size: 14px;
     }
 }
 
@@ -13,9 +14,12 @@
     padding: 10px;
     border-color: var(--accent);
     border-radius: 3px;
+    background-color: var(--light);
     cursor: pointer;
 
     @media screen and (max-width: 767px) {
         flex: 1;
+        min-width: initial;
+        padding: 8px;
     }
 }
