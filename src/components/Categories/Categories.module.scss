@@ -1,0 +1,24 @@
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.category {
+    min-width: 60px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 100px;
+    background-color: var(--beige);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: var(--accent);
+        color: #fff;
+    }
+}
+
+.categoryActive {
+    background-color: var(--accent);
+    color: #fff;
+}

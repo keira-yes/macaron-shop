@@ -11,11 +11,13 @@ function App() {
         <>
             <Header />
             <main id="main">
-                <Routes>
-                    <Route path="/" element={<Catalog />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                <div className="container">
+                    <Routes>
+                        <Route path="/" element={<Catalog />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </div>
             </main>
             <Footer />
         </>
