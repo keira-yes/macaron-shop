@@ -11,14 +11,12 @@ const Categories = () => {
 
     return (
         <div className={styles.categories}>
-            {categories.map((category, key) => (
+            {categories.map((category, i) => (
                 <button
                     type="button"
-                    key={key}
-                    className={
-                        styles.category + (key === active ? ' ' + styles.categoryActive : '')
-                    }
-                    onClick={() => handleActiveCategory(key)}>
+                    key={i}
+                    className={styles.category + (i === active ? ' ' + styles.categoryActive : '')}
+                    onClick={() => handleActiveCategory(i)}>
                     {category}
                 </button>
             ))}

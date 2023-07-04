@@ -177,6 +177,10 @@ h6 {
 
 h1 {
     font-size: 42px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 36px;
+    }
 }
 
 h2 {
@@ -210,6 +214,10 @@ h3 {
 #main {
     flex: 1;
     padding: 80px 0;
+
+    @media screen and (max-width: 767px) {
+        padding: 50px 0;
+    }
 }
 
 .container {
@@ -217,10 +225,8 @@ h3 {
     max-width: 1270px;
     margin: 0 auto;
     padding: 0 50px;
-}
 
-@media screen and (max-width: 767px) {
-    .container {
+    @media screen and (max-width: 767px) {
         padding: 0 16px;
     }
 }
