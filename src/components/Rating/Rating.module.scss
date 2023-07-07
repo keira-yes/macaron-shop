@@ -1,0 +1,10 @@
+.stars {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+.star {
+    line-height: 0.77;
+}

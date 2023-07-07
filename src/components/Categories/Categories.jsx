@@ -11,7 +11,7 @@ const Categories = () => {
                 <button
                     type="button"
                     key={i}
-                    className={styles.category + (i === active ? ' ' + styles.categoryActive : '')}
+                    className={`${styles.category} ${i === active ? styles.categoryActive : ''}`}
                     onClick={() => setActive(i)}>
                     {category}
                 </button>
