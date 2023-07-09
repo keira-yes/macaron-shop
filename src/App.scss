@@ -241,40 +241,6 @@ h3 {
     }
 }
 
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 600;
-    transition: color 0.3s ease;
-
-    @media screen and (max-width: 767px) {
-        font-size: 18px;
-    }
-
-    &:hover {
-        color: var(--accent);
-
-        svg {
-            fill: var(--accent);
-        }
-    }
-
-    svg {
-        fill: var(--text);
-        transition: fill 0.3s ease;
-
-        @media screen and (max-width: 767px) {
-            width: 25px;
-            height: auto;
-        }
-    }
-}
-
 .accent-btn {
     padding: 12px 25px;
     border: 2px solid var(--accent);
