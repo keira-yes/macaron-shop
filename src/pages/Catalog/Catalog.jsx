@@ -8,22 +8,28 @@ import styles from './Catalog.module.scss';
 
 const Catalog = () => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [activeCategory, setActiveCategory] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetch('https://64a2eabcb45881cc0ae5e05e.mockapi.io/products')
+        setLoading(true);
+        const category = activeCategory > 0 ? `category=${activeCategory}` : '';
+        fetch(`https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?${category}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
                 setLoading(false);
             });
-    }, []);
+    }, [activeCategory]);
 
     return (
         <>
             <h1 className="title">Catalog</h1>
             <div className={styles.header}>
-                <Categories />
+                <Categories
+                    activeCategory={activeCategory}
+                    setActiveCategory={(category) => setActiveCategory(category)}
+                />
                 <Sort />
             </div>
             <div className={styles.catalog}>
