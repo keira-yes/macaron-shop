@@ -1,4 +1,4 @@
-import categories from '../../assets/categories.json';
+import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
 const Categories = ({ activeCategory, setActiveCategory }) => {

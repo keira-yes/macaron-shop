@@ -1,0 +1,26 @@
+[
+    {
+        "title": "High Popularity",
+        "value": "rating&order=desc"
+    },
+    {
+        "title": "Low Popularity",
+        "value": "rating&order=asc"
+    },
+    {
+        "title": "High Price",
+        "value": "price&order=desc"
+    },
+    {
+        "title": "Low Price",
+        "value": "price&order=asc"
+    },
+    {
+        "title": "A-Z",
+        "value": "title&order=asc"
+    },
+    {
+        "title": "Z-A",
+        "value": "title&order=desc"
+    }
+]

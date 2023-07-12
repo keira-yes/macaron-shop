@@ -1,10 +1,5 @@
 .sort {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
     @media screen and (max-width: 767px) {
-        gap: 15px;
         font-size: 14px;
     }
 }

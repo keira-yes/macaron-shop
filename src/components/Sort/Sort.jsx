@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 
-const Sort = () => {
-    const [sort, setSort] = useState('popularity');
-
-    const handleSelect = (e) => {
-        setSort(e.target.value);
-    };
-
+const Sort = ({ activeSort, setActiveSort }) => {
     return (
         <div className={styles.sort}>
-            <span>Sort by</span>
-            <select name="sort" className={styles.sortSelect} onChange={handleSelect} value={sort}>
-                <option value="popularity">Popularity</option>
-                <option value="price">Price</option>
-                <option value="alphabet">Alphabet</option>
+            <select
+                name="sort"
+                className={styles.sortSelect}
+                onChange={(e) => setActiveSort(e.target.value)}
+                value={activeSort}>
+                <option value="noSort">Sort by</option>
+                {sortTypes.map((sortType, i) => (
+                    <option key={i} value={sortType.value}>
+                        {sortType.title}
+                    </option>
+                ))}
             </select>
         </div>
     );
