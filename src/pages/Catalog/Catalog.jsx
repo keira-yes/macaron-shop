@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Categories from '../../components/Categories/Categories';
+import Search from '../../components/Search/Search';
 import Sort from '../../components/Sort/Sort';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import Card from '../../components/Card/Card';
@@ -10,23 +11,27 @@ const Catalog = () => {
     const [products, setProducts] = useState([]);
     const [activeCategory, setActiveCategory] = useState(0);
     const [activeSort, setActiveSort] = useState('noSort');
+    const [search, setSearch] = useState('');
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
-        let stringParams = '';
+        let searchParams = '';
         const category = activeCategory > 0 ? `category=${activeCategory}` : '';
         const sort = activeSort !== 'noSort' ? `sortby=${activeSort}` : '';
-        if (category || sort) {
-            stringParams = '?' + [category, sort].filter((item) => item).join('&');
+        const searchValue = search ? `title=${search}` : '';
+
+        if (category || sort || searchValue) {
+            searchParams = '?' + [category, sort, searchValue].filter((item) => item).join('&');
         }
-        fetch(`https://64a2eabcb45881cc0ae5e05e.mockapi.io/products${stringParams}`)
+
+        fetch(`https://64a2eabcb45881cc0ae5e05e.mockapi.io/products${searchParams}`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
                 setLoading(false);
             });
-    }, [activeCategory, activeSort]);
+    }, [activeCategory, activeSort, search]);
 
     return (
         <>
@@ -35,6 +40,14 @@ const Catalog = () => {
                 <Categories
                     activeCategory={activeCategory}
                     setActiveCategory={(category) => setActiveCategory(category)}
+                    search={search}
+                    setSearch={setSearch}
+                />
+                <Search
+                    search={search}
+                    setSearch={(value) => setSearch(value)}
+                    activeCategory={activeCategory}
+                    setActiveCategory={setActiveCategory}
                 />
                 <Sort activeSort={activeSort} setActiveSort={(sort) => setActiveSort(sort)} />
             </div>

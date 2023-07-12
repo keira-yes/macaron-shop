@@ -1,7 +1,7 @@
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
-const Categories = ({ activeCategory, setActiveCategory }) => {
+const Categories = ({ activeCategory, setActiveCategory, search, setSearch }) => {
     return (
         <div className={styles.categories}>
             {categories.map((category, i) => (
@@ -11,7 +11,12 @@ const Categories = ({ activeCategory, setActiveCategory }) => {
                     className={`${styles.category} ${
                         i === activeCategory ? styles.categoryActive : ''
                     }`}
-                    onClick={() => setActiveCategory(i)}>
+                    onClick={() => {
+                        if (search) {
+                            setSearch('');
+                        }
+                        setActiveCategory(i);
+                    }}>
                     {category}
                 </button>
             ))}
