@@ -11,6 +11,10 @@
         padding: 0;
         list-style-type: none;
 
+        @media screen and (max-width: 767px) {
+            gap: 5px;
+        }
+
         &__link {
             display: flex;
             justify-content: center;
@@ -23,6 +27,11 @@
             font-weight: 600;
             transition: border-color 0.3s ease;
             cursor: pointer;
+
+            @media screen and (max-width: 767px) {
+                width: 30px;
+                height: 30px;
+            }
 
             &:hover,
             &--active {

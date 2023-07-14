@@ -4,4 +4,10 @@
     border-radius: 3px;
     background-color: var(--light);
     line-height: 1.3125;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 }
