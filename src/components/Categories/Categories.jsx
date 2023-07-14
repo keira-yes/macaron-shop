@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setActiveCategory } from '../../redux/features/filter/filterSlice';
+import { setActiveCategory, setSearch } from '../../redux/features/filter/filterSlice';
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
-const Categories = ({ search, setSearch }) => {
+const Categories = () => {
     const activeCategory = useSelector((state) => state.filter.activeCategory);
+    const search = useSelector((state) => state.filter.search);
     const dispatch = useDispatch();
 
     return (
@@ -18,7 +19,7 @@ const Categories = ({ search, setSearch }) => {
                     }`}
                     onClick={() => {
                         if (search) {
-                            setSearch('');
+                            dispatch(setSearch(''));
                         }
                         dispatch(setActiveCategory(i));
                     }}>

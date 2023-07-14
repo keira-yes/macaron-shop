@@ -1,6 +1,12 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setSearch, setActiveCategory } from '../../redux/features/filter/filterSlice';
 import styles from './Search.module.scss';
 
-const Search = ({ search, setSearch, activeCategory, setActiveCategory, setCurrentPage }) => {
+const Search = ({ setCurrentPage }) => {
+    const search = useSelector((state) => state.filter.search);
+    const activeCategory = useSelector((state) => state.filter.activeCategory);
+    const dispatch = useDispatch();
+
     return (
         <div className={styles.search}>
             <label htmlFor="search" className="sr-only">
@@ -14,10 +20,10 @@ const Search = ({ search, setSearch, activeCategory, setActiveCategory, setCurre
                 value={search}
                 onChange={(e) => {
                     if (activeCategory > 0) {
-                        setActiveCategory(0);
+                        dispatch(setActiveCategory(0));
                     }
                     setCurrentPage(1);
-                    setSearch(e.target.value);
+                    dispatch(setSearch(e.target.value));
                 }}
             />
         </div>

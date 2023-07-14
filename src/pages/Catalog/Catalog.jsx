@@ -11,7 +11,6 @@ import styles from './Catalog.module.scss';
 
 const Catalog = () => {
     const [products, setProducts] = useState([]);
-    const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
 
@@ -20,6 +19,7 @@ const Catalog = () => {
 
     const activeCategory = useSelector((state) => state.filter.activeCategory);
     const activeSort = useSelector((state) => state.filter.activeSort);
+    const search = useSelector((state) => state.filter.search);
 
     useEffect(() => {
         setLoading(true);
@@ -46,14 +46,8 @@ const Catalog = () => {
         <>
             <h1 className="title">Catalog</h1>
             <div className={styles.header}>
-                <Categories search={search} setSearch={setSearch} />
-                <Search
-                    search={search}
-                    setSearch={(value) => setSearch(value)}
-                    // activeCategory={activeCategory}
-                    // setActiveCategory={setActiveCategory}
-                    setCurrentPage={setCurrentPage}
-                />
+                <Categories />
+                <Search setCurrentPage={setCurrentPage} />
                 <Sort />
             </div>
             <div className={styles.catalog}>
