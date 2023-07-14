@@ -1,6 +1,6 @@
 import styles from './Search.module.scss';
 
-const Search = ({ search, setSearch, activeCategory, setActiveCategory }) => {
+const Search = ({ search, setSearch, activeCategory, setActiveCategory, setCurrentPage }) => {
     return (
         <div className={styles.search}>
             <label htmlFor="search" className="sr-only">
@@ -16,6 +16,7 @@ const Search = ({ search, setSearch, activeCategory, setActiveCategory }) => {
                     if (activeCategory > 0) {
                         setActiveCategory(0);
                     }
+                    setCurrentPage(1);
                     setSearch(e.target.value);
                 }}
             />
