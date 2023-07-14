@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { setActiveCategory } from '../../redux/features/filter/filterSlice';
 import Categories from '../../components/Categories/Categories';
 import Search from '../../components/Search/Search';
 import Sort from '../../components/Sort/Sort';
@@ -12,7 +11,6 @@ import styles from './Catalog.module.scss';
 
 const Catalog = () => {
     const [products, setProducts] = useState([]);
-    const [activeSort, setActiveSort] = useState('noSort');
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -21,6 +19,7 @@ const Catalog = () => {
     const LIMIT = 3;
 
     const activeCategory = useSelector((state) => state.filter.activeCategory);
+    const activeSort = useSelector((state) => state.filter.activeSort);
 
     useEffect(() => {
         setLoading(true);
@@ -51,11 +50,11 @@ const Catalog = () => {
                 <Search
                     search={search}
                     setSearch={(value) => setSearch(value)}
-                    activeCategory={activeCategory}
-                    setActiveCategory={setActiveCategory}
+                    // activeCategory={activeCategory}
+                    // setActiveCategory={setActiveCategory}
                     setCurrentPage={setCurrentPage}
                 />
-                <Sort activeSort={activeSort} setActiveSort={(sort) => setActiveSort(sort)} />
+                <Sort />
             </div>
             <div className={styles.catalog}>
                 {products.length === 0 && <p>Products not found.</p>}

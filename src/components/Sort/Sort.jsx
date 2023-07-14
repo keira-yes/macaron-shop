@@ -1,13 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveSort } from '../../redux/features/filter/filterSlice';
 import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 
-const Sort = ({ activeSort, setActiveSort }) => {
+const Sort = () => {
+    const activeSort = useSelector((state) => state.filter.activeSort);
+    const dispatch = useDispatch();
+
     return (
         <div className={styles.sort}>
             <select
                 name="sort"
                 className={styles.sortSelect}
-                onChange={(e) => setActiveSort(e.target.value)}
+                onChange={(e) => dispatch(setActiveSort(e.target.value))}
                 value={activeSort}>
                 <option value="noSort">Sort by</option>
                 {sortTypes.map((sortType, i) => (
