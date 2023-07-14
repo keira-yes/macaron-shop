@@ -1,7 +1,12 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setActiveCategory } from '../../redux/features/filter/filterSlice';
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
-const Categories = ({ activeCategory, setActiveCategory, search, setSearch }) => {
+const Categories = ({ search, setSearch }) => {
+    const activeCategory = useSelector((state) => state.filter.activeCategory);
+    const dispatch = useDispatch();
+
     return (
         <div className={styles.categories}>
             {categories.map((category, i) => (
@@ -15,7 +20,7 @@ const Categories = ({ activeCategory, setActiveCategory, search, setSearch }) =>
                         if (search) {
                             setSearch('');
                         }
-                        setActiveCategory(i);
+                        dispatch(setActiveCategory(i));
                     }}>
                     {category}
                 </button>
