@@ -11,7 +11,6 @@ import styles from './Catalog.module.scss';
 
 const Catalog = () => {
     const [products, setProducts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
 
     const ITEMS = 10;
@@ -20,6 +19,7 @@ const Catalog = () => {
     const activeCategory = useSelector((state) => state.filter.activeCategory);
     const activeSort = useSelector((state) => state.filter.activeSort);
     const search = useSelector((state) => state.filter.search);
+    const currentPage = useSelector((state) => state.filter.currentPage);
 
     useEffect(() => {
         setLoading(true);
@@ -47,7 +47,7 @@ const Catalog = () => {
             <h1 className="title">Catalog</h1>
             <div className={styles.header}>
                 <Categories />
-                <Search setCurrentPage={setCurrentPage} />
+                <Search />
                 <Sort />
             </div>
             <div className={styles.catalog}>
@@ -58,11 +58,7 @@ const Catalog = () => {
                           <Card key={product.id} categories={categories} data={product} />
                       ))}
             </div>
-            <Pagination
-                items={ITEMS}
-                itemsPerPage={LIMIT}
-                onChangePage={(page) => setCurrentPage(page)}
-            />
+            <Pagination items={ITEMS} itemsPerPage={LIMIT} />
         </>
     );
 };

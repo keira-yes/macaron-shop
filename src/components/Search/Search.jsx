@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setSearch, setActiveCategory } from '../../redux/features/filter/filterSlice';
+import { setSearch } from '../../redux/features/filter/filterSlice';
 import styles from './Search.module.scss';
 
-const Search = ({ setCurrentPage }) => {
+const Search = () => {
     const search = useSelector((state) => state.filter.search);
-    const activeCategory = useSelector((state) => state.filter.activeCategory);
     const dispatch = useDispatch();
 
     return (
@@ -19,10 +18,6 @@ const Search = ({ setCurrentPage }) => {
                 placeholder="Search macaron"
                 value={search}
                 onChange={(e) => {
-                    if (activeCategory > 0) {
-                        dispatch(setActiveCategory(0));
-                    }
-                    setCurrentPage(1);
                     dispatch(setSearch(e.target.value));
                 }}
             />
