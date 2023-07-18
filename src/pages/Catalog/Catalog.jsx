@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Categories from '../../components/Categories/Categories';
 import Search from '../../components/Search/Search';
@@ -15,8 +14,6 @@ const Catalog = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const navigate = useNavigate();
-
     const ITEMS = 10;
     const LIMIT = 3;
 
@@ -27,23 +24,22 @@ const Catalog = () => {
 
     useEffect(() => {
         setLoading(true);
-        let filters = '';
+
+        let searchParams = '';
         const category = activeCategory > 0 ? `category=${activeCategory}` : '';
         const sort = activeSort !== 'noSort' ? `sortby=${activeSort}` : '';
         const searchValue = search ? `title=${search}` : '';
 
         if (category || sort || searchValue) {
-            filters = [category, sort, searchValue].filter((item) => item).join('&') + '&';
+            const filters = [category, sort, searchValue].filter((item) => item).join('&') + '&';
+            searchParams = `?${filters}limit=${LIMIT}&page=${currentPage}`;
         }
-
-        const searchParams = `?${filters}limit=${LIMIT}&page=${currentPage}`;
-        navigate(searchParams);
 
         axios(`https://64a2eabcb45881cc0ae5e05e.mockapi.io/products${searchParams}`).then((res) => {
             setProducts(res.data);
             setLoading(false);
         });
-    }, [activeCategory, activeSort, search, currentPage, navigate]);
+    }, [activeCategory, activeSort, search, currentPage]);
 
     return (
         <>
