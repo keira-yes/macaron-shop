@@ -4,7 +4,7 @@ import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 
 const Sort = () => {
-    const activeSort = useSelector((state) => state.filter.activeSort);
+    const activeSort = useSelector(({ filter }) => filter.activeSort);
     const dispatch = useDispatch();
 
     return (

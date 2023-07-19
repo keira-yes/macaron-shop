@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
 
 const Header = () => {
+    const { totalQty, totalPice } = useSelector(({ cart }) => cart);
+
     return (
         <header className={styles.header}>
             <div className={styles.container + ' container'}>
@@ -37,9 +40,9 @@ const Header = () => {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <span className={styles.cartBadge}>1</span>
+                        <span className={styles.cartBadge}>{totalQty}</span>
                     </span>
-                    <span className={styles.cartTotal}>$456</span>
+                    <span className={styles.cartTotal}>${totalPice}</span>
                 </Link>
             </div>
         </header>

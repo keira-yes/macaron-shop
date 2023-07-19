@@ -1,13 +1,22 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/features/cart/cartSlice';
 import Rating from '../Rating/Rating';
+import categories from '../../assets/json/categories.json';
 import styles from './Card.module.scss';
 
-const Card = ({
-    categories,
-    data: { imageUrl, title, packing, sizes, price, category, rating },
-}) => {
+const Card = ({ data: { id, imageUrl, title, packing, sizes, price, category, rating } }) => {
     const [packingActive, setPackingActive] = useState(0);
     const [sizeActive, setSizeActive] = useState(0);
+    const [disabled, setDisabled] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const addToCart = () => {
+        setDisabled(true);
+        dispatch(addItem({ id, imageUrl, title, packing: packingActive, size: sizeActive, price }));
+        setDisabled(false);
+    };
 
     return (
         <article className={styles.card}>
@@ -56,7 +65,11 @@ const Card = ({
                     <strong className={styles.cardPrice}>
                         from <span>${price}</span>
                     </strong>
-                    <button type="button" className={styles.cardCart}>
+                    <button
+                        type="button"
+                        className={styles.cardCart}
+                        onClick={addToCart}
+                        disabled={disabled}>
                         <svg
                             className={styles.cardCartIcon}
                             width="16"

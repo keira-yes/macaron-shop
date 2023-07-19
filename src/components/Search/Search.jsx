@@ -3,7 +3,7 @@ import { setSearch } from '../../redux/features/filter/filterSlice';
 import styles from './Search.module.scss';
 
 const Search = () => {
-    const search = useSelector((state) => state.filter.search);
+    const search = useSelector(({ filter }) => filter.search);
     const dispatch = useDispatch();
 
     return (

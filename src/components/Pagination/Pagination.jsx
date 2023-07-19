@@ -4,7 +4,7 @@ import { setCurrentPage } from '../../redux/features/filter/filterSlice';
 import styles from './Pagination.module.scss';
 
 const Pagination = ({ items, itemsPerPage }) => {
-    const currentPage = useSelector((state) => state.filter.currentPage);
+    const currentPage = useSelector(({ filter }) => filter.currentPage);
     const dispatch = useDispatch();
     const pageCount = Math.ceil(items / itemsPerPage);
 

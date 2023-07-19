@@ -4,7 +4,7 @@ import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
 const Categories = () => {
-    const activeCategory = useSelector((state) => state.filter.activeCategory);
+    const activeCategory = useSelector(({ filter }) => filter.activeCategory);
     const dispatch = useDispatch();
 
     return (
