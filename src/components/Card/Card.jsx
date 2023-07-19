@@ -14,7 +14,17 @@ const Card = ({ data: { id, imageUrl, title, packing, sizes, price, category, ra
 
     const addToCart = () => {
         setDisabled(true);
-        dispatch(addItem({ id, imageUrl, title, packing: packingActive, size: sizeActive, price }));
+        dispatch(
+            addItem({
+                id,
+                imageUrl,
+                title,
+                packing: packingActive,
+                sizes,
+                size: sizeActive,
+                price,
+            }),
+        );
         setDisabled(false);
     };
 
