@@ -1,10 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { clear } from '../../redux/features/cart/cartSlice';
 import BackButton from '../../components/BackButton/BackButton';
 import CartItem from '../../components/CartItem/CartItem';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
     const { items, totalQty, totalPice } = useSelector(({ cart }) => cart);
+    const dispatch = useDispatch();
 
     return (
         <div className={styles.holder}>
@@ -15,7 +17,10 @@ const Cart = () => {
                         <strong className={styles.subtitle}>
                             {totalQty} item(s) / ${totalPice}
                         </strong>
-                        <button type="button" className={styles.clear}>
+                        <button
+                            type="button"
+                            className={styles.clear}
+                            onClick={() => dispatch(clear())}>
                             <svg
                                 className={styles.clearIcon}
                                 width="30"
