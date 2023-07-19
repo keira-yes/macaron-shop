@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = {
     items: [],
@@ -11,25 +12,39 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state, action) => {
-            const sameItem = state.items
+            const cartItem = state.items
                 .filter((item) => item.id === action.payload.id)
                 .find(
                     (item) =>
                         item.packing === action.payload.packing &&
                         item.size === action.payload.size,
                 );
-            if (sameItem) {
-                sameItem.counter++;
+            if (cartItem) {
+                cartItem.counter += 1;
             } else {
+                action.payload.itemId = nanoid();
                 action.payload.counter = 1;
                 state.items.push(action.payload);
             }
             state.totalQty += 1;
             state.totalPice += action.payload.price;
         },
+        increment: (state, action) => {
+            const cartItem = state.items.find((item) => item.itemId === action.payload);
+            cartItem.counter += 1;
+            state.totalQty += 1;
+            state.totalPice += cartItem.price;
+        },
+        decrement: (state, action) => {
+            const cartItem = state.items.find((item) => item.itemId === action.payload);
+            if (cartItem.counter === 1) return;
+            cartItem.counter -= 1;
+            state.totalQty -= 1;
+            state.totalPice -= cartItem.price;
+        },
     },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, increment, decrement } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,6 +1,10 @@
+import { useDispatch } from 'react-redux';
+import { increment, decrement } from '../../redux/features/cart/cartSlice';
 import styles from './CartItem.module.scss';
 
-const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, price } }) => {
+const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, price, itemId } }) => {
+    const dispatch = useDispatch();
+
     return (
         <article className={styles.item}>
             <div className={styles.itemContent}>
@@ -15,11 +19,17 @@ const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, pric
                 </div>
             </div>
             <div className={styles.itemQty}>
-                <button type="button" className={styles.itemQtyBtn}>
+                <button
+                    type="button"
+                    className={styles.itemQtyBtn}
+                    onClick={() => dispatch(decrement(itemId))}>
                     -
                 </button>
                 <span className={styles.itemQtyValue}>{counter}</span>
-                <button type="button" className={styles.itemQtyBtn}>
+                <button
+                    type="button"
+                    className={styles.itemQtyBtn}
+                    onClick={() => dispatch(increment(itemId))}>
                     +
                 </button>
             </div>
