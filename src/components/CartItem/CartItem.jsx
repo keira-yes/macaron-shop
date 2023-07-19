@@ -23,7 +23,7 @@ const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, pric
                     +
                 </button>
             </div>
-            <strong className={styles.itemPrice}>${price}</strong>
+            <strong className={styles.itemPrice}>${counter * price}</strong>
             <button type="button" className={styles.itemRemove}>
                 <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                     <g>

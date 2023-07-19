@@ -24,6 +24,8 @@ export const cartSlice = createSlice({
                 action.payload.counter = 1;
                 state.items.push(action.payload);
             }
+            state.totalQty += 1;
+            state.totalPice += action.payload.price;
         },
     },
 });
