@@ -5,6 +5,20 @@ import styles from './CartItem.module.scss';
 const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, price, itemId } }) => {
     const dispatch = useDispatch();
 
+    const incrementProduct = () => {
+        dispatch(increment(itemId));
+    };
+
+    const decrementProduct = () => {
+        dispatch(decrement(itemId));
+    };
+
+    const removeProduct = () => {
+        if (window.confirm('Are you sure you want to remove?')) {
+            dispatch(removeItem({ itemId, counter, price }));
+        }
+    };
+
     return (
         <article className={styles.item}>
             <div className={styles.itemContent}>
@@ -19,25 +33,16 @@ const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, pric
                 </div>
             </div>
             <div className={styles.itemQty}>
-                <button
-                    type="button"
-                    className={styles.itemQtyBtn}
-                    onClick={() => dispatch(decrement(itemId))}>
+                <button type="button" className={styles.itemQtyBtn} onClick={decrementProduct}>
                     -
                 </button>
                 <span className={styles.itemQtyValue}>{counter}</span>
-                <button
-                    type="button"
-                    className={styles.itemQtyBtn}
-                    onClick={() => dispatch(increment(itemId))}>
+                <button type="button" className={styles.itemQtyBtn} onClick={incrementProduct}>
                     +
                 </button>
             </div>
             <strong className={styles.itemPrice}>${counter * price}</strong>
-            <button
-                type="button"
-                className={styles.itemRemove}
-                onClick={() => dispatch(removeItem({ itemId, counter, price }))}>
+            <button type="button" className={styles.itemRemove} onClick={removeProduct}>
                 <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                     <g>
                         <path d="M27.5111 25.0001L35.0954 17.4158C35.351 17.1173 35.4846 16.7332 35.4695 16.3405C35.4543 15.9477 35.2915 15.5752 35.0135 15.2973C34.7356 15.0193 34.3631 14.8565 33.9703 14.8413C33.5775 14.8262 33.1935 14.9598 32.895 15.2154L25.3107 22.7217L17.6796 15.0906C17.3811 14.8349 16.9971 14.7013 16.6043 14.7165C16.2116 14.7317 15.839 14.8945 15.5611 15.1724C15.2832 15.4503 15.1204 15.8229 15.1052 16.2157C15.09 16.6084 15.2236 16.9924 15.4793 17.291L23.0948 25.0001L15.6353 32.3659C15.472 32.5058 15.3393 32.6779 15.2456 32.8715C15.1519 33.0651 15.0993 33.276 15.091 33.4909C15.0827 33.7058 15.1189 33.9202 15.1974 34.1204C15.2758 34.3207 15.3948 34.5026 15.5469 34.6546C15.699 34.8067 15.8809 34.9257 16.0811 35.0042C16.2814 35.0826 16.4957 35.1189 16.7106 35.1105C16.9255 35.1022 17.1364 35.0496 17.33 34.9559C17.5236 34.8623 17.6958 34.7296 17.8357 34.5662L25.2795 27.1224L32.6765 34.5194C32.9751 34.7751 33.3591 34.9087 33.7518 34.8935C34.1446 34.8783 34.5171 34.7155 34.7951 34.4376C35.073 34.1597 35.2358 33.7871 35.251 33.3943C35.2661 33.0016 35.1326 32.6176 34.8769 32.319L27.5111 25.0001Z" />

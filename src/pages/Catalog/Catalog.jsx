@@ -27,11 +27,12 @@ const Catalog = () => {
         const searchValue = search ? `title=${search}` : '';
 
         if (category || sort || searchValue) {
-            const filters = [category, sort, searchValue].filter((item) => item).join('&') + '&';
-            searchParams = `?${filters}limit=${LIMIT}&page=${currentPage}`;
+            searchParams = `&${[category, sort, searchValue].filter((item) => item).join('&')}`;
         }
 
-        axios(`https://64a2eabcb45881cc0ae5e05e.mockapi.io/products${searchParams}`).then((res) => {
+        axios(
+            `https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
+        ).then((res) => {
             setProducts(res.data);
             setLoading(false);
         });

@@ -8,6 +8,12 @@ const Cart = () => {
     const { items, totalQty, totalPice } = useSelector(({ cart }) => cart);
     const dispatch = useDispatch();
 
+    const clearCart = () => {
+        if (window.confirm('Are you sure you want to clear cart?')) {
+            dispatch(clear());
+        }
+    };
+
     return (
         <div className={styles.holder}>
             <h1 className="title">Cart</h1>
@@ -17,10 +23,7 @@ const Cart = () => {
                         <strong className={styles.subtitle}>
                             {totalQty} item(s) / ${totalPice}
                         </strong>
-                        <button
-                            type="button"
-                            className={styles.clear}
-                            onClick={() => dispatch(clear())}>
+                        <button type="button" className={styles.clear} onClick={clearCart}>
                             <svg
                                 className={styles.clearIcon}
                                 width="30"
