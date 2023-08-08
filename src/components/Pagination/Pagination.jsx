@@ -1,10 +1,10 @@
 import ReactPaginate from 'react-paginate';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentPage } from '../../redux/features/filter/filterSlice';
+import { selectFilter, setCurrentPage } from '../../redux/features/filter/filterSlice';
 import styles from './Pagination.module.scss';
 
 const Pagination = ({ items, itemsPerPage }) => {
-    const currentPage = useSelector(({ filter }) => filter.currentPage);
+    const { currentPage } = useSelector(selectFilter);
     const dispatch = useDispatch();
     const pageCount = Math.ceil(items / itemsPerPage);
 

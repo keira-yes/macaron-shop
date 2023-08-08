@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectCart } from '../../redux/features/cart/cartSlice';
 import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
 
 const Header = () => {
-    const { totalQty, totalPice } = useSelector(({ cart }) => cart);
+    const { totalQty, totalPice } = useSelector(selectCart);
 
     return (
         <header className={styles.header}>

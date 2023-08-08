@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async (arg) => {
     const { LIMIT, currentPage, searchParams } = arg;
     const { data } = await axios(
-        `https://-64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
+        `https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
     );
     return data;
 });
@@ -35,6 +35,8 @@ export const productsSlice = createSlice({
         });
     },
 });
+
+export const selectProducts = (state) => state.products;
 
 export const { setActiveCategory } = productsSlice.actions;
 

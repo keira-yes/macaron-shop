@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { clear } from '../../redux/features/cart/cartSlice';
+import { selectCart, clear } from '../../redux/features/cart/cartSlice';
 import BackButton from '../../components/BackButton/BackButton';
 import CartItem from '../../components/CartItem/CartItem';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
-    const { items, totalQty, totalPice } = useSelector(({ cart }) => cart);
+    const { items, totalQty, totalPice } = useSelector(selectCart);
     const dispatch = useDispatch();
 
     const clearCart = () => {

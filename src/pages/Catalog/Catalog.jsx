@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/features/products/productsSlice';
+import { selectFilter } from '../../redux/features/filter/filterSlice';
+import { selectProducts, fetchProducts } from '../../redux/features/products/productsSlice';
 import Categories from '../../components/Categories/Categories';
 import Search from '../../components/Search/Search';
 import Sort from '../../components/Sort/Sort';
@@ -13,8 +14,8 @@ const Catalog = () => {
     const ITEMS = 10;
     const LIMIT = 3;
 
-    const { activeCategory, activeSort, search, currentPage } = useSelector(({ filter }) => filter);
-    const { products, isLoading } = useSelector(({ products }) => products);
+    const { activeCategory, activeSort, search, currentPage } = useSelector(selectFilter);
+    const { products, isLoading } = useSelector(selectProducts);
     const dispatch = useDispatch();
 
     useEffect(() => {
