@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../redux/features/products/productsSlice';
 import Categories from '../../components/Categories/Categories';
 import Search from '../../components/Search/Search';
 import Sort from '../../components/Sort/Sort';
@@ -10,17 +10,14 @@ import Pagination from '../../components/Pagination/Pagination';
 import styles from './Catalog.module.scss';
 
 const Catalog = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-
     const ITEMS = 10;
     const LIMIT = 3;
 
     const { activeCategory, activeSort, search, currentPage } = useSelector(({ filter }) => filter);
+    const { products, isLoading } = useSelector(({ products }) => products);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setLoading(true);
-
         let searchParams = '';
         const category = activeCategory > 0 ? `category=${activeCategory}` : '';
         const sort = activeSort !== 'noSort' ? `sortby=${activeSort}` : '';
@@ -30,13 +27,8 @@ const Catalog = () => {
             searchParams = `&${[category, sort, searchValue].filter((item) => item).join('&')}`;
         }
 
-        axios(
-            `https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
-        ).then((res) => {
-            setProducts(res.data);
-            setLoading(false);
-        });
-    }, [activeCategory, activeSort, search, currentPage]);
+        dispatch(fetchProducts({ LIMIT, currentPage, searchParams }));
+    }, [activeCategory, activeSort, search, currentPage, dispatch]);
 
     return (
         <>
@@ -47,10 +39,13 @@ const Catalog = () => {
                 <Sort />
             </div>
             <div className={styles.catalog}>
-                {products.length === 0 && <p>Products not found.</p>}
-                {loading
-                    ? [...Array(6)].map((_, i) => <CardSkeleton key={i} />)
-                    : products.map((product) => <Card key={product.id} data={product} />)}
+                {isLoading ? (
+                    [...Array(3)].map((_, i) => <CardSkeleton key={i} />)
+                ) : products.length === 0 ? (
+                    <p>Products not found.</p>
+                ) : (
+                    products.map((product) => <Card key={product.id} data={product} />)
+                )}
             </div>
             <Pagination items={ITEMS} itemsPerPage={LIMIT} />
         </>
