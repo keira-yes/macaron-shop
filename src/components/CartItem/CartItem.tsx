@@ -10,7 +10,7 @@ type CartItemProps = {
     size: number;
     counter: number;
     price: number;
-    itemId: number;
+    itemId: string;
 };
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -23,7 +23,6 @@ const CartItem: React.FC<CartItemProps> = ({
     price,
     itemId,
 }) => {
-    console.log(sizes);
     const dispatch = useDispatch();
 
     const incrementProduct = () => {

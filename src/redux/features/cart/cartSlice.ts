@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { RootState } from '../../store';
 
@@ -7,10 +7,17 @@ type CartItem = {
     imageUrl: string;
     title: string;
     packing: number;
+    sizes: number[];
     size: number;
     price: number;
-    itemId: string;
+    itemId?: string;
+    counter?: number;
+};
+
+type CartItemRemoved = {
     counter: number;
+    itemId: string;
+    price: number;
 };
 
 interface CartSliceState {
@@ -29,7 +36,7 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addItem: (state, action) => {
+        addItem: (state, action: PayloadAction<CartItem>) => {
             const cartItem = state.items
                 .filter((item) => item.id === action.payload.id)
                 .find(
@@ -37,7 +44,7 @@ export const cartSlice = createSlice({
                         item.packing === action.payload.packing &&
                         item.size === action.payload.size,
                 );
-            if (cartItem) {
+            if (cartItem && cartItem.counter) {
                 cartItem.counter += 1;
             } else {
                 action.payload.itemId = nanoid();
@@ -47,24 +54,25 @@ export const cartSlice = createSlice({
             state.totalQty += 1;
             state.totalPice += action.payload.price;
         },
-        increment: (state, action) => {
+        increment: (state, action: PayloadAction<string>) => {
             const cartItem = state.items.find((item) => item.itemId === action.payload);
-            if (cartItem) {
+            if (cartItem && cartItem.counter) {
                 cartItem.counter += 1;
                 state.totalQty += 1;
                 state.totalPice += cartItem.price;
             }
         },
-        decrement: (state, action) => {
+        decrement: (state, action: PayloadAction<string>) => {
             const cartItem = state.items.find((item) => item.itemId === action.payload);
-            if (cartItem) {
+            if (cartItem && cartItem.counter) {
                 if (cartItem.counter === 1) return;
                 cartItem.counter -= 1;
                 state.totalQty -= 1;
                 state.totalPice -= cartItem.price;
             }
         },
-        removeItem: (state, action) => {
+        removeItem: (state, action: PayloadAction<CartItemRemoved>) => {
+            console.log(action);
             state.items = state.items.filter((item) => item.itemId !== action.payload.itemId);
             state.totalQty -= action.payload.counter;
             state.totalPice -= action.payload.counter * action.payload.price;
