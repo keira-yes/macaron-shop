@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectFilter, setCurrentPage } from '../../redux/features/filter/filterSlice';
 import styles from './Pagination.module.scss';
 
-const Pagination = ({ items, itemsPerPage }) => {
+type PaginationProps = {
+    items: number;
+    itemsPerPage: number;
+};
+
+const Pagination: React.FC<PaginationProps> = ({ items, itemsPerPage }) => {
     const { currentPage } = useSelector(selectFilter);
     const dispatch = useDispatch();
     const pageCount = Math.ceil(items / itemsPerPage);

@@ -1,6 +1,10 @@
 import styles from './Rating.module.scss';
 
-const Rating = ({ stars }) => {
+type RatingProps = {
+    stars: number;
+};
+
+const Rating: React.FC<RatingProps> = ({ stars }) => {
     return (
         <div className={styles.stars}>
             {[...Array(stars)].map((_, i) => {

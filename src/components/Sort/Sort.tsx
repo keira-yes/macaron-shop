@@ -3,7 +3,7 @@ import { selectFilter, setActiveSort } from '../../redux/features/filter/filterS
 import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 
-const Sort = () => {
+const Sort: React.FC = () => {
     const { activeSort } = useSelector(selectFilter);
     const dispatch = useDispatch();
 

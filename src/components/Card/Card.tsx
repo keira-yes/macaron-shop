@@ -5,7 +5,22 @@ import Rating from '../Rating/Rating';
 import categories from '../../assets/json/categories.json';
 import styles from './Card.module.scss';
 
-const Card = ({ data: { id, imageUrl, title, packing, sizes, price, category, rating } }) => {
+type CardProps = {
+    data: {
+        id: number;
+        imageUrl: string;
+        title: string;
+        packing: number[];
+        sizes: number[];
+        price: number;
+        category: number;
+        rating: number;
+    };
+};
+
+const Card: React.FC<CardProps> = ({
+    data: { id, imageUrl, title, packing, sizes, price, category, rating },
+}) => {
     const [packingActive, setPackingActive] = useState(0);
     const [sizeActive, setSizeActive] = useState(0);
     const [disabled, setDisabled] = useState(false);

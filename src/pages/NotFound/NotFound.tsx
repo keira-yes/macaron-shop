@@ -2,7 +2,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import styles from './NotFound.module.scss';
 import Image from '../../assets/img/404.png';
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
     return (
         <>
             <h1 className="title">Sorry, page not found</h1>

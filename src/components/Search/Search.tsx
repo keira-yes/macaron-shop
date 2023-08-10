@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectFilter, setSearch } from '../../redux/features/filter/filterSlice';
 import styles from './Search.module.scss';
 
-const Search = () => {
+const Search: React.FC = () => {
     const { search } = useSelector(selectFilter);
     const dispatch = useDispatch();
 

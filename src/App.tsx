@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 
-function App() {
+const App: React.FC = () => {
     return (
         <>
             <Header />
@@ -22,6 +22,6 @@ function App() {
             <Footer />
         </>
     );
-}
+};
 
 export default App;

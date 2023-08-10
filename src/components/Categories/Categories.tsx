@@ -3,7 +3,7 @@ import { selectFilter, setActiveCategory } from '../../redux/features/filter/fil
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
-const Categories = () => {
+const Categories: React.FC = () => {
     const { activeCategory } = useSelector(selectFilter);
     const dispatch = useDispatch();
 

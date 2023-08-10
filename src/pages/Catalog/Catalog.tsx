@@ -10,7 +10,7 @@ import Card from '../../components/Card/Card';
 import Pagination from '../../components/Pagination/Pagination';
 import styles from './Catalog.module.scss';
 
-const Catalog = () => {
+const Catalog: React.FC = () => {
     const ITEMS = 10;
     const LIMIT = 3;
 
@@ -28,6 +28,7 @@ const Catalog = () => {
             searchParams = `&${[category, sort, searchValue].filter((item) => item).join('&')}`;
         }
 
+        // @ts-ignore
         dispatch(fetchProducts({ LIMIT, currentPage, searchParams }));
     }, [activeCategory, activeSort, search, currentPage, dispatch]);
 
@@ -45,7 +46,7 @@ const Catalog = () => {
                 ) : products.length === 0 ? (
                     <p>Products not found.</p>
                 ) : (
-                    products.map((product) => <Card key={product.id} data={product} />)
+                    products.map((product: any) => <Card key={product.id} data={product} />)
                 )}
             </div>
             <Pagination items={ITEMS} itemsPerPage={LIMIT} />

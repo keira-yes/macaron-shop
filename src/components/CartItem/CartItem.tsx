@@ -2,7 +2,22 @@ import { useDispatch } from 'react-redux';
 import { increment, decrement, removeItem } from '../../redux/features/cart/cartSlice';
 import styles from './CartItem.module.scss';
 
-const CartItem = ({ data: { imageUrl, title, packing, sizes, size, counter, price, itemId } }) => {
+type CartItemProps = {
+    data: {
+        imageUrl: string;
+        title: string;
+        packing: number;
+        sizes: number[];
+        size: number;
+        counter: number;
+        price: number;
+        itemId: number;
+    };
+};
+
+const CartItem: React.FC<CartItemProps> = ({
+    data: { imageUrl, title, packing, sizes, size, counter, price, itemId },
+}) => {
     const dispatch = useDispatch();
 
     const incrementProduct = () => {

@@ -4,7 +4,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import CartItem from '../../components/CartItem/CartItem';
 import styles from './Cart.module.scss';
 
-const Cart = () => {
+const Cart: React.FC = () => {
     const { items, totalQty, totalPice } = useSelector(selectCart);
     const dispatch = useDispatch();
 
@@ -40,7 +40,7 @@ const Cart = () => {
                         </button>
                     </header>
                     <div className={styles.body}>
-                        {items.map((item, i) => (
+                        {items.map((item: any, i: number) => (
                             <CartItem key={i} data={item} />
                         ))}
                         <div className={styles.total}>

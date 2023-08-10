@@ -5,7 +5,7 @@ import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
     const { totalQty, totalPice } = useSelector(selectCart);
     const { pathname } = useLocation();
 
