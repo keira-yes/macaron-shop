@@ -7,12 +7,15 @@ const Sort: React.FC = () => {
     const { activeSort } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+        dispatch(setActiveSort(e.target.value));
+
     return (
         <div className={styles.sort}>
             <select
                 name="sort"
                 className={styles.sortSelect}
-                onChange={(e) => dispatch(setActiveSort(e.target.value))}
+                onChange={handleSortChange}
                 value={activeSort}>
                 <option value="noSort">Sort by</option>
                 {sortTypes.map((sortType, i) => (

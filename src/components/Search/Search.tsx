@@ -6,6 +6,10 @@ const Search: React.FC = () => {
     const { search } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSearch(e.target.value));
+    };
+
     return (
         <div className={styles.search}>
             <label htmlFor="search" className="sr-only">
@@ -17,9 +21,7 @@ const Search: React.FC = () => {
                 className={styles.input}
                 placeholder="Search macaron"
                 value={search}
-                onChange={(e) => {
-                    dispatch(setSearch(e.target.value));
-                }}
+                onChange={handleInputChange}
             />
         </div>
     );

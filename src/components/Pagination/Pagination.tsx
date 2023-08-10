@@ -13,15 +13,17 @@ const Pagination: React.FC<PaginationProps> = ({ items, itemsPerPage }) => {
     const dispatch = useDispatch();
     const pageCount = Math.ceil(items / itemsPerPage);
 
+    const handlePageChange = (e: { selected: number }) => {
+        dispatch(setCurrentPage(e.selected + 1));
+    };
+
     return (
         <div className={styles.pagination}>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"
                 forcePage={currentPage - 1}
-                onPageChange={(event) => {
-                    dispatch(setCurrentPage(event.selected + 1));
-                }}
+                onPageChange={handlePageChange}
                 pageRangeDisplayed={itemsPerPage}
                 pageCount={pageCount}
                 previousLabel="<"
