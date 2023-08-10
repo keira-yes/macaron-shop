@@ -40,8 +40,8 @@ const Cart: React.FC = () => {
                         </button>
                     </header>
                     <div className={styles.body}>
-                        {items.map((item: any, i: number) => (
-                            <CartItem key={i} data={item} />
+                        {items.map((item: any, i) => (
+                            <CartItem key={i} {...item} />
                         ))}
                         <div className={styles.total}>
                             <h2 className={styles.totalTitle}>Total</h2>

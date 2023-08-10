@@ -3,21 +3,27 @@ import { increment, decrement, removeItem } from '../../redux/features/cart/cart
 import styles from './CartItem.module.scss';
 
 type CartItemProps = {
-    data: {
-        imageUrl: string;
-        title: string;
-        packing: number;
-        sizes: number[];
-        size: number;
-        counter: number;
-        price: number;
-        itemId: number;
-    };
+    imageUrl: string;
+    title: string;
+    packing: number;
+    sizes: number[];
+    size: number;
+    counter: number;
+    price: number;
+    itemId: number;
 };
 
 const CartItem: React.FC<CartItemProps> = ({
-    data: { imageUrl, title, packing, sizes, size, counter, price, itemId },
+    imageUrl,
+    title,
+    packing,
+    sizes,
+    size,
+    counter,
+    price,
+    itemId,
 }) => {
+    console.log(sizes);
     const dispatch = useDispatch();
 
     const incrementProduct = () => {

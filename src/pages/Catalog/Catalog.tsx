@@ -46,7 +46,7 @@ const Catalog: React.FC = () => {
                 ) : products.length === 0 ? (
                     <p>Products not found.</p>
                 ) : (
-                    products.map((product: any) => <Card key={product.id} data={product} />)
+                    products.map((product: any) => <Card key={product.id} {...product} />)
                 )}
             </div>
             <Pagination items={ITEMS} itemsPerPage={LIMIT} />

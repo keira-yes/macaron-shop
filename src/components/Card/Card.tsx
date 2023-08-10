@@ -1,25 +1,20 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ProductItem } from '../../redux/features/products/productsSlice';
 import { addItem } from '../../redux/features/cart/cartSlice';
 import Rating from '../Rating/Rating';
 import categories from '../../assets/json/categories.json';
 import styles from './Card.module.scss';
 
-type CardProps = {
-    data: {
-        id: number;
-        imageUrl: string;
-        title: string;
-        packing: number[];
-        sizes: number[];
-        price: number;
-        category: number;
-        rating: number;
-    };
-};
-
-const Card: React.FC<CardProps> = ({
-    data: { id, imageUrl, title, packing, sizes, price, category, rating },
+const Card: React.FC<ProductItem> = ({
+    id,
+    imageUrl,
+    title,
+    packing,
+    sizes,
+    price,
+    category,
+    rating,
 }) => {
     const [packingActive, setPackingActive] = useState(0);
     const [sizeActive, setSizeActive] = useState(0);
