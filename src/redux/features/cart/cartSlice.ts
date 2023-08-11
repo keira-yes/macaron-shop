@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { RootState } from '../../store';
+import { getLocalStorageCart } from '../../../utils/getLocalStorageCart';
 
-type CartItem = {
+export type CartItem = {
     id: number;
     imageUrl: string;
     title: string;
@@ -26,10 +27,12 @@ interface CartSliceState {
     totalPice: number;
 }
 
+const { cartItems, totalCounter, totalSumm } = getLocalStorageCart();
+
 const initialState: CartSliceState = {
-    items: [],
-    totalQty: 0,
-    totalPice: 0,
+    items: cartItems,
+    totalQty: totalCounter,
+    totalPice: totalSumm,
 };
 
 export const cartSlice = createSlice({

@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/features/cart/cartSlice';
@@ -6,8 +7,17 @@ import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
-    const { totalQty, totalPice } = useSelector(selectCart);
+    const { items, totalQty, totalPice } = useSelector(selectCart);
     const { pathname } = useLocation();
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            localStorage.setItem('cart', JSON.stringify(items));
+        }
+
+        isMounted.current = true;
+    }, [items]);
 
     return (
         <header className={styles.header}>
