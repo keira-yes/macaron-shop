@@ -40,7 +40,7 @@ const Cart: React.FC = () => {
                         </button>
                     </header>
                     <div className={styles.body}>
-                        {items.map((item: any, i) => (
+                        {items.map((item, i) => (
                             <CartItem key={i} {...item} />
                         ))}
                         <div className={styles.total}>

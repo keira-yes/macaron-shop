@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../redux/store';
 import { selectFilter } from '../../redux/features/filter/filterSlice';
 import { selectProducts, fetchProducts } from '../../redux/features/products/productsSlice';
 import Categories from '../../components/Categories/Categories';
@@ -16,7 +17,7 @@ const Catalog: React.FC = () => {
 
     const { activeCategory, activeSort, search, currentPage } = useSelector(selectFilter);
     const { products, isLoading } = useSelector(selectProducts);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         let searchParams = '';
@@ -28,7 +29,6 @@ const Catalog: React.FC = () => {
             searchParams = `&${[category, sort, searchValue].filter((item) => item).join('&')}`;
         }
 
-        // @ts-ignore
         dispatch(fetchProducts({ LIMIT, currentPage, searchParams }));
     }, [activeCategory, activeSort, search, currentPage, dispatch]);
 
@@ -46,7 +46,7 @@ const Catalog: React.FC = () => {
                 ) : products.length === 0 ? (
                     <p>Products not found.</p>
                 ) : (
-                    products.map((product: any) => <Card key={product.id} {...product} />)
+                    products.map((product) => <Card key={product.id} {...product} />)
                 )}
             </div>
             <Pagination items={ITEMS} itemsPerPage={LIMIT} />

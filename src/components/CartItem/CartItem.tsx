@@ -8,9 +8,9 @@ type CartItemProps = {
     packing: number;
     sizes: number[];
     size: number;
-    counter: number;
+    counter?: number | undefined;
     price: number;
-    itemId: string;
+    itemId?: string | undefined;
 };
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -26,15 +26,15 @@ const CartItem: React.FC<CartItemProps> = ({
     const dispatch = useDispatch();
 
     const incrementProduct = () => {
-        dispatch(increment(itemId));
+        if (itemId) dispatch(increment(itemId));
     };
 
     const decrementProduct = () => {
-        dispatch(decrement(itemId));
+        if (itemId) dispatch(decrement(itemId));
     };
 
     const removeProduct = () => {
-        if (window.confirm('Are you sure you want to remove?')) {
+        if (window.confirm('Are you sure you want to remove?') && itemId && counter) {
             dispatch(removeItem({ itemId, counter, price }));
         }
     };
@@ -61,7 +61,7 @@ const CartItem: React.FC<CartItemProps> = ({
                     +
                 </button>
             </div>
-            <strong className={styles.itemPrice}>${counter * price}</strong>
+            <strong className={styles.itemPrice}>${counter && counter * price}</strong>
             <button type="button" className={styles.itemRemove} onClick={removeProduct}>
                 <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                     <g>

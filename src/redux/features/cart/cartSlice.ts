@@ -10,14 +10,14 @@ type CartItem = {
     sizes: number[];
     size: number;
     price: number;
-    itemId?: string;
-    counter?: number;
+    itemId?: string | undefined;
+    counter?: number | undefined;
 };
 
 type CartItemRemoved = {
-    counter: number;
-    itemId: string;
     price: number;
+    itemId: string;
+    counter: number;
 };
 
 interface CartSliceState {
@@ -72,10 +72,11 @@ export const cartSlice = createSlice({
             }
         },
         removeItem: (state, action: PayloadAction<CartItemRemoved>) => {
-            console.log(action);
             state.items = state.items.filter((item) => item.itemId !== action.payload.itemId);
-            state.totalQty -= action.payload.counter;
-            state.totalPice -= action.payload.counter * action.payload.price;
+            if (action.payload.counter) {
+                state.totalQty -= action.payload.counter;
+                state.totalPice -= action.payload.counter * action.payload.price;
+            }
         },
         clear: (state) => {
             state.items = [];

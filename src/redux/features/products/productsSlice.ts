@@ -1,14 +1,12 @@
-import { PayloadAction, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from '../../store';
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async (arg: any) => {
-    const { LIMIT, currentPage, searchParams } = arg;
-    const { data } = await axios(
-        `https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
-    );
-    return data;
-});
+type FetchProductsArg = {
+    LIMIT: number;
+    currentPage: number;
+    searchParams: string;
+};
 
 export type ProductItem = {
     id: number;
@@ -25,6 +23,17 @@ interface ProductsSliceState {
     products: ProductItem[];
     isLoading: boolean;
 }
+
+export const fetchProducts = createAsyncThunk<ProductItem[], FetchProductsArg>(
+    'products/fetchProducts',
+    async (arg) => {
+        const { LIMIT, currentPage, searchParams } = arg;
+        const { data } = await axios(
+            `https://64a2eabcb45881cc0ae5e05e.mockapi.io/products?limit=${LIMIT}&page=${currentPage}${searchParams}`,
+        );
+        return data;
+    },
+);
 
 const initialState: ProductsSliceState = {
     products: [],
