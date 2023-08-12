@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, clear } from '../../redux/features/cart/cartSlice';
+import { clear } from '../../redux/features/cart/cartSlice';
+import { selectCart } from '../../redux/features/cart/cartSelectors';
 import BackButton from '../../components/BackButton/BackButton';
 import CartItem from '../../components/CartItem/CartItem';
 import styles from './Cart.module.scss';

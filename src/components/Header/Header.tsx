@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectCart } from '../../redux/features/cart/cartSlice';
+import { selectCart } from '../../redux/features/cart/cartSelectors';
 import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';

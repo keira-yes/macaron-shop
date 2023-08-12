@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter, setSearch } from '../../redux/features/filter/filterSlice';
+import { setSearch } from '../../redux/features/filter/filterSlice';
+import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import styles from './Search.module.scss';
 
 const Search: React.FC = () => {

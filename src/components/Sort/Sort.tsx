@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter, setActiveSort } from '../../redux/features/filter/filterSlice';
+import { setActiveSort } from '../../redux/features/filter/filterSlice';
+import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 

@@ -1,4 +1,4 @@
-import { CartItem } from '../redux/features/cart/cartSlice';
+import { CartItem } from '../redux/features/cart/cartTypes';
 
 export const calculateTotalQty = (items: CartItem[]) => {
     return items.reduce((acc, rec) => acc + (rec.counter ? rec.counter : 0), 0);

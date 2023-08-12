@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../redux/store';
-import { selectFilter } from '../../redux/features/filter/filterSlice';
-import { selectProducts, fetchProducts } from '../../redux/features/products/productsSlice';
+import { selectFilter } from '../../redux/features/filter/filterSelectors';
+import { fetchProducts } from '../../redux/features/products/productsAsyncActions';
+import { selectProducts } from '../../redux/features/products/productsSelectors';
 import Categories from '../../components/Categories/Categories';
 import Search from '../../components/Search/Search';
 import Sort from '../../components/Sort/Sort';

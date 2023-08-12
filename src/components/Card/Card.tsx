@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ProductItem } from '../../redux/features/products/productsSlice';
+import { ProductItem } from '../../redux/features/products/productsTypes';
 import { addItem } from '../../redux/features/cart/cartSlice';
 import Rating from '../Rating/Rating';
 import categories from '../../assets/json/categories.json';

@@ -1,31 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { RootState } from '../../store';
 import { getLocalStorageCart } from '../../../utils/getLocalStorageCart';
-
-export type CartItem = {
-    id: number;
-    imageUrl: string;
-    title: string;
-    packing: number;
-    sizes: number[];
-    size: number;
-    price: number;
-    itemId?: string | undefined;
-    counter?: number | undefined;
-};
-
-type CartItemRemoved = {
-    price: number;
-    itemId: string;
-    counter: number;
-};
-
-interface CartSliceState {
-    items: CartItem[];
-    totalQty: number;
-    totalPice: number;
-}
+import { CartItem, CartItemRemoved, CartSliceState } from './cartTypes';
 
 const { cartItems, totalCounter, totalSumm } = getLocalStorageCart();
 
@@ -88,8 +64,6 @@ export const cartSlice = createSlice({
         },
     },
 });
-
-export const selectCart = (state: RootState) => state.cart;
 
 export const { addItem, increment, decrement, removeItem, clear } = cartSlice.actions;
 

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter, setActiveCategory } from '../../redux/features/filter/filterSlice';
+import { setActiveCategory } from '../../redux/features/filter/filterSlice';
+import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
