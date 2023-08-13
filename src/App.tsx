@@ -1,8 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Catalog from './pages/Catalog/Catalog';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import { Header, Footer } from './components';
 import './App.scss';
 
 const Cart = lazy(() => import(/* webpackChunkName: "cart" */ './pages/Cart/Cart'));

@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { clear } from '../../redux/features/cart/cartSlice';
 import { selectCart } from '../../redux/features/cart/cartSelectors';
-import BackButton from '../../components/BackButton/BackButton';
-import CartItem from '../../components/CartItem/CartItem';
+import { BackButton, CartItem } from '../../components';
 import styles from './Cart.module.scss';
 
 const Cart: React.FC = () => {

@@ -4,7 +4,7 @@ import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import categories from '../../assets/json/categories.json';
 import styles from './Categories.module.scss';
 
-const Categories: React.FC = () => {
+export const Categories: React.FC = () => {
     const { activeCategory } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
@@ -26,5 +26,3 @@ const Categories: React.FC = () => {
         </div>
     );
 };
-
-export default Categories;

@@ -4,7 +4,7 @@ type RatingProps = {
     stars: number;
 };
 
-const Rating: React.FC<RatingProps> = ({ stars }) => {
+export const Rating: React.FC<RatingProps> = ({ stars }) => {
     return (
         <div className={styles.stars}>
             {[...Array(stars)].map((_, i) => {
@@ -17,5 +17,3 @@ const Rating: React.FC<RatingProps> = ({ stars }) => {
         </div>
     );
 };
-
-export default Rating;

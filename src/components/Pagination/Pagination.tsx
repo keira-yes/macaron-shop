@@ -9,7 +9,7 @@ type PaginationProps = {
     itemsPerPage: number;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ items, itemsPerPage }) => {
+export const Pagination: React.FC<PaginationProps> = ({ items, itemsPerPage }) => {
     const { currentPage } = useSelector(selectFilter);
     const dispatch = useDispatch();
     const pageCount = Math.ceil(items / itemsPerPage);
@@ -44,5 +44,3 @@ const Pagination: React.FC<PaginationProps> = ({ items, itemsPerPage }) => {
         </div>
     );
 };
-
-export default Pagination;

@@ -4,7 +4,7 @@ import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import sortTypes from '../../assets/json/sort.json';
 import styles from './Sort.module.scss';
 
-const Sort: React.FC = () => {
+export const Sort: React.FC = () => {
     const { activeSort } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
@@ -28,5 +28,3 @@ const Sort: React.FC = () => {
         </div>
     );
 };
-
-export default Sort;

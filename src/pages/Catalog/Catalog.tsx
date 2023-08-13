@@ -4,12 +4,7 @@ import { useAppDispatch } from '../../redux/store';
 import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import { fetchProducts } from '../../redux/features/products/productsAsyncActions';
 import { selectProducts } from '../../redux/features/products/productsSelectors';
-import Categories from '../../components/Categories/Categories';
-import Search from '../../components/Search/Search';
-import Sort from '../../components/Sort/Sort';
-import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import Card from '../../components/Card/Card';
-import Pagination from '../../components/Pagination/Pagination';
+import { Categories, Search, Sort, CardSkeleton, Card, Pagination } from '../../components';
 import styles from './Catalog.module.scss';
 
 const Catalog: React.FC = () => {

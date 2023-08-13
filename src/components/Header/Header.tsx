@@ -6,7 +6,7 @@ import LogoDesktop from '../../assets/img/macaron_logo_accent.svg';
 import LogoMobile from '../../assets/img/macaron_logo_white.svg';
 import styles from './Header.module.scss';
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
     const { items, totalQty, totalPice } = useSelector(selectCart);
     const { pathname } = useLocation();
     const isMounted = useRef(false);
@@ -62,5 +62,3 @@ const Header: React.FC = () => {
         </header>
     );
 };
-
-export default Header;

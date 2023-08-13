@@ -1,7 +1,7 @@
 import ContentLoader from 'react-content-loader';
 import styles from './CardSkeleton.module.scss';
 
-const CardSkeleton: React.FC = () => (
+export const CardSkeleton: React.FC = () => (
     <ContentLoader
         className={styles.cardSkeleton}
         speed={2}
@@ -25,5 +25,3 @@ const CardSkeleton: React.FC = () => (
         <rect x="59%" y="470" rx="0" ry="0" width="41%" height="30" />
     </ContentLoader>
 );
-
-export default CardSkeleton;

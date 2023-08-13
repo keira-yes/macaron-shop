@@ -1,4 +1,4 @@
-import BackButton from '../../components/BackButton/BackButton';
+import { BackButton } from '../../components';
 import styles from './NotFound.module.scss';
 import Image from '../../assets/img/404.png';
 

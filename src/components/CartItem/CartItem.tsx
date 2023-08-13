@@ -13,7 +13,7 @@ type CartItemProps = {
     itemId?: string | undefined;
 };
 
-const CartItem: React.FC<CartItemProps> = ({
+export const CartItem: React.FC<CartItemProps> = ({
     imageUrl,
     title,
     packing,
@@ -73,5 +73,3 @@ const CartItem: React.FC<CartItemProps> = ({
         </article>
     );
 };
-
-export default CartItem;

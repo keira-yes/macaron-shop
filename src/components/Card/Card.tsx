@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ProductItem } from '../../redux/features/products/productsTypes';
 import { addItem } from '../../redux/features/cart/cartSlice';
-import Rating from '../Rating/Rating';
+import { Rating } from '../index';
 import categories from '../../assets/json/categories.json';
 import styles from './Card.module.scss';
 
-const Card: React.FC<ProductItem> = ({
+export const Card: React.FC<ProductItem> = ({
     id,
     imageUrl,
     title,
@@ -117,5 +117,3 @@ const Card: React.FC<ProductItem> = ({
         </article>
     );
 };
-
-export default Card;

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './BackButton.module.scss';
 
-const BackButton: React.FC = () => {
+export const BackButton: React.FC = () => {
     const navigate = useNavigate();
 
     const handleNavigateBack = () => navigate(-1);
@@ -17,5 +17,3 @@ const BackButton: React.FC = () => {
         </button>
     );
 };
-
-export default BackButton;

@@ -3,7 +3,7 @@ import { setSearch } from '../../redux/features/filter/filterSlice';
 import { selectFilter } from '../../redux/features/filter/filterSelectors';
 import styles from './Search.module.scss';
 
-const Search: React.FC = () => {
+export const Search: React.FC = () => {
     const { search } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
@@ -27,5 +27,3 @@ const Search: React.FC = () => {
         </div>
     );
 };
-
-export default Search;
