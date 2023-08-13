@@ -16,8 +16,11 @@ export const Card: React.FC<ProductItem> = ({
     category,
     rating,
 }) => {
-    const [packingActive, setPackingActive] = useState(0);
-    const [sizeActive, setSizeActive] = useState(0);
+    const defaultPacking = packing.length === 1 ? packing[0] : 0;
+    const defaulSize = sizes.length === 1 ? sizes[0] : 0;
+
+    const [packingActive, setPackingActive] = useState(defaultPacking);
+    const [sizeActive, setSizeActive] = useState(defaulSize);
     const [disabled, setDisabled] = useState(false);
 
     const dispatch = useDispatch();
@@ -59,7 +62,11 @@ export const Card: React.FC<ProductItem> = ({
                         <button
                             type="button"
                             className={`${styles.cardButton} ${
-                                i === packingActive ? styles.cardButtonActive : ''
+                                packing.length === 1
+                                    ? styles.cardButtonActive
+                                    : i === packingActive
+                                    ? styles.cardButtonActive
+                                    : ''
                             }`}
                             key={i}
                             onClick={() => setPackingActive(i)}>
@@ -73,7 +80,11 @@ export const Card: React.FC<ProductItem> = ({
                         <button
                             type="button"
                             className={`${styles.cardButton} ${
-                                i === sizeActive ? styles.cardButtonActive : ''
+                                sizes.length === 1
+                                    ? styles.cardButtonActive
+                                    : i === sizeActive
+                                    ? styles.cardButtonActive
+                                    : ''
                             }`}
                             key={i}
                             onClick={() => setSizeActive(i)}>
