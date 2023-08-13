@@ -1,10 +1,12 @@
+import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Catalog from './pages/Catalog/Catalog';
-import Cart from './pages/Cart/Cart';
-import NotFound from './pages/NotFound/NotFound';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import './App.scss';
+
+const Cart = lazy(() => import(/* webpackChunkName: "cart" */ './pages/Cart/Cart'));
+const NotFound = lazy(() => import(/* webpackChunkName: "notFound" */ './pages/NotFound/NotFound'));
 
 const App: React.FC = () => {
     return (
@@ -14,8 +16,22 @@ const App: React.FC = () => {
                 <div className="container">
                     <Routes>
                         <Route path="/" element={<Catalog />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="*" element={<NotFound />} />
+                        <Route
+                            path="/cart"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <Cart />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <NotFound />
+                                </Suspense>
+                            }
+                        />
                     </Routes>
                 </div>
             </main>
